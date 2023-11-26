@@ -1,0 +1,22 @@
+class Solution {
+ public:
+  int removeElement(vector<int>& nums, int val) {
+    int i = 0;
+
+    for (const int num : nums)
+      if (num != val)
+        nums[i++] = num;
+
+    return i;
+  }
+};
+
+int removeElement(vector<int>& nums, int val): This is the function signature. It takes a reference to a vector of integers (nums) and an integer value (val) that needs to be removed.
+
+int i = 0;: Initialize a variable i to 0. This variable will be used to keep track of the index in the modified vector.
+
+for (const int num : nums): This is a range-based for loop that iterates over each element (num) in the vector nums.
+
+if (num != val) nums[i++] = num;: Inside the loop, it checks if the current element num is not equal to the specified value val. If true, it means the element is not to be removed, so it assigns num to the i-th position in the vector and increments i. This effectively overwrites the original vector with the elements not equal to val, and i keeps track of the length of the modified vector.
+
+return i;: After the loop, the function returns the value of i, which represents the length of the modified vector. This length corresponds to the number of elements in the original vector (nums) that are not equal to the specified value val.
