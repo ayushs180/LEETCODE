@@ -1,0 +1,21 @@
+#include <vector>
+#include <string>
+#include <list>
+
+class Solution {
+public:
+    std::vector<std::string> generateParenthesis(int n) {
+        std::list<std::string> result;
+        findAll("(", 1, 0, result, n);
+        return std::vector<std::string>(result.begin(), result.end());
+    }
+
+    void findAll(std::string current, int o, int c, std::list<std::string>& result, int n) {
+        if (current.length() == 2 * n) {
+            result.push_back(current);
+            return;
+        }
+        if (o < n) findAll(current + "(", o + 1, c, result, n);
+        if (c < o) findAll(current + ")", o, c + 1, result, n);
+    }
+};
