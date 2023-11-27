@@ -1,0 +1,22 @@
+class Solution {
+public:
+    
+    void moveZeroes(vector<int>& nums) {
+    int i = 0; // Index for non-zero elements
+    
+    // Iterate through the vector
+    for (int j = 0; j < nums.size(); ++j) {
+        // If the current element is non-zero
+        if (nums[j] != 0) {
+            // Move non-zero element to the front
+            nums[i++] = nums[j];
+        }
+    }
+
+    // Fill the remaining positions with zeroes
+    while (i < nums.size()) {
+        nums[i++] = 0;
+    }
+}
+
+};
