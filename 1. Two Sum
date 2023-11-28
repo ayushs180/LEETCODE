@@ -1,0 +1,19 @@
+#include <vector>
+
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+        vector<int> ans;  // Declare ans outside the if-else block
+        for (int i = 0; i < nums.size(); i++) {
+            for (int j = i + 1; j < nums.size(); j++) {
+                if (nums[i] + nums[j] == target) {
+                    ans.push_back(i);
+                    ans.push_back(j);
+                    return ans;  // Move the return statement here
+                }
+            }
+        }
+        // If no solution is found, you can return an empty vector or handle it as needed
+        return ans;  // Move the return statement here
+    }
+};
