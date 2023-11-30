@@ -1,0 +1,19 @@
+double findMedianSortedArrays(std::vector<int>& nums1, std::vector<int>& nums2) {
+    int n1 = nums1.size();
+    int n2 = nums2.size();
+    std::vector<int> merged;
+
+    // Merge the two sorted arrays
+    std::merge(nums1.begin(), nums1.end(), nums2.begin(), nums2.end(), std::back_inserter(merged));
+
+    int totalSize = n1 + n2;
+    int middleIndex = totalSize / 2;
+
+    if (totalSize % 2 == 1) {
+        // If totalSize is odd, return the middle element
+        return static_cast<double>(merged[middleIndex]);
+    } else {
+        // If totalSize is even, return the average of the two middle elements
+        return (static_cast<double>(merged[middleIndex - 1]) + static_cast<double>(merged[middleIndex])) / 2.0;
+    }
+    }
