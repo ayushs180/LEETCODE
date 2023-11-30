@@ -1,0 +1,16 @@
+  vector<int> plusOne(vector<int>& digits) {
+        int n=digits.size();
+          for (int i = n - 1; i >= 0; --i) {
+        if (digits[i] != 9) {
+            digits[i] += 1;
+            return digits;  // No carry, return the updated vector
+        } else {
+            digits[i] = 0;  // Set the current digit to 0 and continue to the next digit
+        }
+    }
+
+    // If we're here, it means there is a carry to a new digit
+    digits.insert(digits.begin(), 1);
+        return digits;
+        
+    }
