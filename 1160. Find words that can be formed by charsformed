@@ -1,0 +1,35 @@
+bool check(const std::string& word, const std::unordered_map<char, int>& charCount) {
+    std::unordered_map<char, int> wordCount;
+    
+    for (char c : word) {
+        wordCount[c]++;
+    }
+
+    for (const auto& entry : wordCount) {
+        char character = entry.first;
+        int count = entry.second;
+
+        if (charCount.find(character) == charCount.end() || charCount.at(character) < count) {
+            return false;
+        }
+    }
+
+    return true;
+}
+
+int countCharacters(const std::vector<std::string>& words, const std::string& chars) {
+    int cnt = 0;
+    std::unordered_map<char, int> charCount;
+
+    for (char c : chars) {
+        charCount[c]++;
+    }
+
+    for (const std::string& word : words) {
+        if (word.length() <= chars.length() && check(word, charCount)) {
+            cnt += word.length();
+        }
+    }
+
+    return cnt;
+}
