@@ -1,0 +1,18 @@
+int totalMoney(int n) {
+        int total=0;
+        int monDeposit=1;
+       
+            for(int day=1;day<=n;++day){
+                total+=monDeposit + (day-1)%7;
+
+                if(day%7==0){
+                    monDeposit+=1;
+                }
+                
+
+            }
+            
+        return total;
+        
+    }
+};
