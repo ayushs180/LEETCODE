@@ -1,0 +1,9 @@
+int numberOfMatches(int n) {
+    // Base case: no matches for 0 or 1 team
+    if (n <= 1) {
+        return 0;
+    }
+
+    // Calculate matches directly using the floor of n/2
+    return n % 2 == 0 ? n / 2 + numberOfMatches(n / 2) : (n - 1) / 2 + numberOfMatches((n - 1) / 2 + 1);
+}
