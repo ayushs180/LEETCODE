@@ -1,0 +1,32 @@
+class Solution {
+public:
+    #include <cctype>  // for isalnum
+
+bool isPalindrome(string s) {
+    int st = 0;
+    int e = s.length() - 1;
+
+    while (st <= e) {
+        // Skip non-alphanumeric characters from the start
+        while (st <= e && !isalnum(s[st])) {
+            st++;
+        }
+
+        // Skip non-alphanumeric characters from the end
+        while (st <= e && !isalnum(s[e])) {
+            e--;
+        }
+
+        // Compare alphanumeric characters
+        if (st <= e && tolower(s[st]) != tolower(s[e])) {
+            return false;
+        }
+
+        st++;
+        e--;
+    }
+
+    return true;
+}
+
+};
