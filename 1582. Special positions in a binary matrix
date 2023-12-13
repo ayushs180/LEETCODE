@@ -1,0 +1,35 @@
+int numSpecial(const std::vector<std::vector<int>>& mat) {
+    int row = mat.size();
+    int col = mat[0].size();
+    int ans = 0;
+
+    for (int i = 0; i < row; ++i) {
+        for (int j = 0; j < col; ++j) {
+            if (mat[i][j] == 1) {
+                // Check if all other elements in the row are 0
+                bool isRowSpecial = true;
+                for (int k = 0; k < col; ++k) {
+                    if (k != j && mat[i][k] == 1) {
+                        isRowSpecial = false;
+                        break;
+                    }
+                }
+
+                // Check if all other elements in the column are 0
+                bool isColSpecial = true;
+                for (int k = 0; k < row; ++k) {
+                    if (k != i && mat[k][j] == 1) {
+                        isColSpecial = false;
+                        break;
+                    }
+                }
+
+                // If both row and column are special, increment the answer
+                if (isRowSpecial && isColSpecial) {
+                    ++ans;
+                }
+            }
+        }
+    }
+
+    return ans;
