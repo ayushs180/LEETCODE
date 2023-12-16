@@ -21,7 +21,7 @@ int countCharacters(const std::vector<std::string>& words, const std::string& ch
     int cnt = 0;
     std::unordered_map<char, int> charCount;
 
-    for (char c : chars) {
+    for (char c : chars){
         charCount[c]++;
     }
 
