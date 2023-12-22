@@ -1,0 +1,32 @@
+ int digitSquareSum(int n){
+       int sum=0;
+       while(n>0){
+           int digit=n%10;
+           sum+=digit*digit;
+           n=n/10;
+       }
+       return sum;
+   }
+
+
+    bool isHappy(int n) {
+        int slow=n;
+        int fast=n;
+
+         while(true){
+        // Move slow pointer one step
+        slow = digitSquareSum(slow);
+
+        // Move fast pointer two steps
+        fast = digitSquareSum(digitSquareSum(fast));
+
+        // Check if either pointer reaches 1
+        if( slow == 1 || fast == 1)
+            return true;
+
+        // Check if there is a cycle (slow and fast pointers meet)
+        if (slow == fast)
+            return false;
+        
+        }
+    }
