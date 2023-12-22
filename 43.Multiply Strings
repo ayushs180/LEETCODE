@@ -1,0 +1,32 @@
+string multiply(string num1, string num2) {
+    int len1 = num1.size();
+    int len2 = num2.size();
+    vector<int> result(len1 + len2, 0);
+
+    for (int i = len2 - 1; i >= 0; i--) {
+        int carry = 0;
+        for (int j = len1 - 1; j >= 0; j--) {
+            int temp_sum = (num2[i] - '0') * (num1[j] - '0') + result[i + j + 1] + carry;
+            result[i + j + 1] = temp_sum % 10;
+            carry = temp_sum / 10;
+        }
+
+        result[i] += carry;
+    }
+
+    // Convert result to string
+    string result_str;
+    for (int digit : result) {
+        result_str += (digit + '0');
+    }
+
+    // Remove leading zeros
+    size_t start_pos = result_str.find_first_not_of('0');
+    if (start_pos != string::npos) {
+        result_str = result_str.substr(start_pos);
+    } else {
+        result_str = "0";
+    }
+
+    return result_str;
+}
